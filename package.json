@@ -2,7 +2,10 @@
   "name": "auth-microservice",
   "version": "0.0.1",
   "description": "",
-  "author": "dafholding",
+  "author": "AhmedAbdelaty",
+  "engines": {
+    "node": "16.17.0"
+  },
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
