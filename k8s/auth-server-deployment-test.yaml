@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server-deployment
+  namespace: galaxy-services-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: auth-server
+  template:
+    metadata:
+      labels:
+        component: auth-server
+    spec:
+      imagePullSecrets:
+        - name: regsecret
+      containers:
+        - name: auth-server
+          image: ahmed/galaxy-auth-service:#BUILD_NUMBER
+          ports:  
+            - containerPort: 1000
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-server-cluster-ip-service
+  namespace: galaxy-services-test
+spec:
+  type: ClusterIP
+  selector:
+    component: auth-server
+  ports:
+    - port: 1000
+      targetPort: 1000
