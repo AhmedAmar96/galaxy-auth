@@ -2,7 +2,7 @@
     "version":2,
     "builds": [
       {
-        "src": "./src/main",
+        "src": "set NODE_ENV=development && npx kill-port 1000 && nest start --watch",
         "use": "@vercel/node"
       }
     ],
